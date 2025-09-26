@@ -1,0 +1,34 @@
+.carousel {
+  position: relative;
+  z-index: 0;
+
+  &:hover .group {
+    animation-play-state: paused;
+  }
+}
+
+.group {
+  will-change: transform;
+  animation: scrolling 15s linear infinite;
+}
+
+.carousel::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 0; bottom: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--primary), rgba(0,0,0,0) 64px),
+    linear-gradient(to left , var(--primary), rgba(0,0,0,0) 64px);
+
+}
+
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 0.5 * (5 * 0.25rem)));
+  }
+}

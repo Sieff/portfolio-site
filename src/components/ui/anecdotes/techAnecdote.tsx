@@ -1,5 +1,5 @@
 import * as React from "react"
-import {TechIcon} from "@/components/ui/techIcon";
+import {TechIcon} from "@/components/ui/anecdotes/techIcon";
 import {getIconTailwindClass, IconName} from "@/util/icon-utils";
 import {cn} from "@/lib/utils";
 import { useHover } from "@uidotdev/usehooks";
