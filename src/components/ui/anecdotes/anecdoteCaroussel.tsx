@@ -6,16 +6,18 @@ import {TechAnecdoteData} from "@/components/ui/anecdotes/anecdoteCarouselItems"
 
 
 interface Props {
-  items: TechAnecdoteData[]
+  items: TechAnecdoteData[],
+  reverse?: boolean,
+  delay?: boolean,
 }
 
-function AnecdoteCaroussel({items}: Props) {
+function AnecdoteCaroussel({items, reverse = false, delay = false}: Props) {
   const minNumberItems = 4;
   const repeats = Math.ceil(2 * minNumberItems / items.length);
 
   return (
-    <div className={cn(styles.carousel, "bg-[#121212] py-5 flex justify-start w-(--width-content) overflow-hidden")}>
-      <div className={cn(styles.group, "flex gap-5")}>
+    <div className={cn(styles.carousel, "bg-[#121212] py-2 flex justify-start w-(--width-content) overflow-hidden")}>
+      <div className={cn(styles.group, reverse && styles.reverse, delay && styles.delay, "flex gap-5")}>
         {[...Array(2)].map((_, i) => (
           items.map((item, j) => (
             <TechAnecdote key={`${i};${j}`} icon={item.iconName} color={item.color} title={item.title} anecdote={item.anecdote}/>

@@ -12,6 +12,14 @@
   animation: scrolling 15s linear infinite;
 }
 
+.reverse {
+  animation-direction: reverse;
+}
+
+.delay {
+  animation-delay: 3s;
+}
+
 .carousel::after {
   content: '';
   position: absolute;

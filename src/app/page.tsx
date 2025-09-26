@@ -3,6 +3,7 @@ import {Button} from "@/components/ui/button";
 import {useCallback} from "react";
 import {AnecdoteCaroussel} from "@/components/ui/anecdotes/anecdoteCaroussel";
 import {CAROUSEL_DATA} from "@/components/ui/anecdotes/anecdoteCarouselItems";
+import {AnecdoteSection} from "@/components/ui/anecdotes/anecdoteSection";
 
 export default function Home() {
   const sayHello = useCallback(() => {
@@ -14,7 +15,7 @@ export default function Home() {
       <div className="max-w-(--width-content) w-(--width-content) overflow-visible min-h-screen flex flex-col gap-1 items-center">
         <p className="text-primary-foreground">Moin</p>
         <Button onClick={sayHello} variant={"default"}>Drück mich nicht</Button>
-        <AnecdoteCaroussel items={CAROUSEL_DATA} />
+        <AnecdoteSection />
       </div>
     </main>
   );
