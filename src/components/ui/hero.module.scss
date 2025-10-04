@@ -1,0 +1,17 @@
+.wave {
+  display: inline-block;
+  animation: none;
+}
+
+.wave:hover {
+  animation: wave 1s linear forwards;
+}
+
+@keyframes wave {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-30deg); }
+  40%  { transform: rotate(30deg); }
+  60%  { transform: rotate(-20deg); }
+  80%  { transform: rotate(20deg); }
+  100% { transform: rotate(0deg); }
+}

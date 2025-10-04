@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
-
+import styles from "./button.module.scss"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
@@ -47,11 +47,21 @@ function Button({
   const Comp = asChild ? Slot : "button"
 
   return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
+    <div className={cn(styles.buttonWrapper, "rounded-md")}>
+      <svg height="110%" width="110%" xmlns="http://www.w3.org/2000/svg">
+        <rect
+          className={styles.customBorder}
+          height="100%"
+          width="100%"
+          strokeLinejoin="round"
+        />
+      </svg>
+      <Comp
+        data-slot="button"
+        className={cn(buttonVariants({variant, size, className}))}
+        {...props}
+      />
+    </div>
   )
 }
 
