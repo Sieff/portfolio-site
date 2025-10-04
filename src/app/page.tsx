@@ -1,23 +1,51 @@
 'use client';
-import {Button} from "@/components/ui/button";
-import {useCallback} from "react";
+import {useEffect, useState} from "react";
 import {AnecdoteSection} from "@/components/ui/anecdotes/anecdoteSection";
 import Hero from "@/components/ui/hero";
+import ExperienceSection from "@/components/ui/experience/experienceSection";
+import { useIntersectionObserver } from "@uidotdev/usehooks";
+import ProjectSection from "@/components/ui/projects/projectSection";
 
 export default function Home() {
-  const sayHello = useCallback(() => {
-    window.alert("du hurensohn");
-  }, []);
+  const [locked, setLocked] = useState(true);
+
+  const [ref, entry] = useIntersectionObserver({
+    threshold: 0.9,
+  });
+
+  useEffect(() => {
+    if (entry?.isIntersecting) {
+      setLocked(true);
+    }
+  }, [entry?.isIntersecting]);
+
+  useEffect(() => {
+    const handleScroll = (e: Event) => {
+      if (locked) {
+        e.preventDefault();
+        const element = document.getElementById("content");
+        element?.scrollIntoView({ behavior: "smooth" });
+
+        setTimeout(() => {
+          setLocked(false);
+        }, 500);
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll, { passive: false });
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, [locked]);
+
 
   return (
     <main className={"snap-y h-screen overflow-y-scroll snap-mandatory min-w-screen flex flex-col items-center bg-primary"}>
-      <div className={"snap-start h-screen"}>
+      <div ref={ref} className={"snap-start h-screen"}>
         <Hero />
       </div>
-      <div className="snap-start max-w-(--width-content) w-(--width-content) overflow-visible min-h-screen flex flex-col gap-1 items-center">
-        <p className="text-primary-foreground">Moin</p>
-        <Button onClick={sayHello} variant={"secondary"}>Drück mich nicht</Button>
+      <div id="content" className="snap-start max-w-(--width-content) w-(--width-content) flex flex-col gap-5 justify-center items-center pt-10">
+        <ExperienceSection />
         <AnecdoteSection />
+        <ProjectSection />
       </div>
     </main>
   );

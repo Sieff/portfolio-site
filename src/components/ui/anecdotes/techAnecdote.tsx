@@ -1,5 +1,5 @@
 import * as React from "react"
-import {TechIcon} from "@/components/ui/anecdotes/techIcon";
+import {Icon} from "@/components/ui/icon";
 import {getIconTailwindClass, IconName} from "@/util/icon-utils";
 import {cn} from "@/lib/utils";
 import { useHover } from "@uidotdev/usehooks";
@@ -20,11 +20,11 @@ function TechAnecdote({icon, title, anecdote}: Props) {
       <div className={cn("flex rounded-l-md")}>
         <div className={cn("flex rounded-l-md", colorClass)}>
           <div className={cn(`p-4 rounded-l-md`)}>
-            <TechIcon icon={icon}/>
+            <Icon icon={icon}/>
           </div>
-          <div className={cn("transition-[width, height] ease-in-out duration-1000 flex content-start items-start overflow-hidden", hovering ? "w-48 max-h-50" : "max-h-20 w-0")}>
+          <div className={cn("transition-[width, height] ease-in-out duration-1000 flex content-start items-start overflow-hidden", hovering ? "w-70 max-h-65" : "max-h-20 w-0")}>
             <div className={""}>
-              <p className={cn("text-primary p-4 w-48")}>{anecdote}</p>
+              <p className={cn("text-primary p-4 w-70")}>{anecdote}</p>
             </div>
           </div>
         </div>
