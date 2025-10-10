@@ -20,8 +20,8 @@ export default function Home() {
   }, [entry?.isIntersecting]);
 
   useEffect(() => {
-    const handleScroll = (e: Event) => {
-      if (locked) {
+    const handleScroll = (e: WheelEvent) => {
+      if (locked && e.deltaY > 0) {
         e.preventDefault();
         const element = document.getElementById("content");
         element?.scrollIntoView({ behavior: "smooth" });

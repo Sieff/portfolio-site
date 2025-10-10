@@ -3,8 +3,10 @@
   animation: none;
 }
 
-.wave:hover {
-  animation: wave 1s linear forwards;
+.greeting:hover {
+  .wave {
+    animation: wave 1s linear forwards;
+  }
 }
 
 @keyframes wave {

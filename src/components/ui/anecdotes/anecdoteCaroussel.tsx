@@ -13,12 +13,12 @@ interface Props {
 
 function AnecdoteCaroussel({items, reverse = false, delay = false}: Props) {
   const minNumberItems = 4;
-  const repeats = Math.ceil(2 * minNumberItems / items.length);
+  const repeats = Math.max(2, Math.ceil(2 * minNumberItems / items.length));
 
   return (
     <div className={cn(styles.carousel, "bg-[#121212] py-2 flex justify-start w-(--width-content) overflow-hidden")}>
       <div className={cn(styles.group, reverse && styles.reverse, delay && styles.delay, "flex gap-5")}>
-        {[...Array(2)].map((_, i) => (
+        {[...Array(repeats)].map((_, i) => (
           items.map((item, j) => (
             <TechAnecdote key={`${i};${j}`} icon={item.iconName} color={item.color} title={item.title} anecdote={item.anecdote}/>
           ))

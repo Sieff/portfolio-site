@@ -7,7 +7,7 @@ import Image from "next/image";
 function Hero() {
   return (
     <div className={cn(styles.hero, "min-w-screen min-h-screen flex")}>
-      <div className="flex-[0.618] flex flex-col justify-center items-end">
+      <div className={cn("flex-[0.618] flex flex-col justify-center items-end", styles.greeting)}>
         <h3 className="mb-4">Hey <span className={styles.wave}>👋</span>, ich bin</h3>
         <h1>Steffen Schubert</h1>
         <h2>Software Entwickler</h2>
