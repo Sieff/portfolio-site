@@ -21,6 +21,9 @@ import Racket from '../../../public/icons/racket.svg';
 import Dbt from '../../../public/icons/dbt.svg';
 import Sql from '../../../public/icons/sql.svg';
 import Docker from '../../../public/icons/docker.svg';
+import GitHub from '../../../public/icons/github-mark.svg';
+import LinkedIn from '../../../public/icons/linkedin.svg';
+import SQLite from '../../../public/icons/sqlite.svg';
 import {IconName} from "@/util/icon-utils";
 import Image from "next/image";
 
@@ -85,6 +88,12 @@ function getIconSrc(iconName: IconName, size: number) {
       return <Sql height={`${size}px`} width={`${size}px`} />;
     case IconName.DOCKER:
       return <Docker height={`${size}px`} width={`${size}px`} />;
+    case IconName.GITHUB:
+      return <GitHub height={`${size}px`} width={`${size}px`} />;
+    case IconName.LINKEDIN:
+      return <LinkedIn height={`${size}px`} width={`${size}px`} />;
+    case IconName.SQLITE:
+      return <SQLite height={`${size}px`} width={`${size}px`} />;
     default:
       return <Typescript height={`${size}px`} width={`${size}px`} />;
   }

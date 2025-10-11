@@ -42,9 +42,9 @@ export default function Home() {
       <div ref={ref} className={"snap-start h-screen"}>
         <Hero />
       </div>
-      <div id="content" className="snap-start max-w-(--width-content) w-(--width-content) flex flex-col gap-5 justify-center items-center pt-10">
-        <ExperienceSection />
+      <div id="content" className="snap-start w-full flex flex-col gap-5 justify-center items-center pt-10">
         <AnecdoteSection />
+        <ExperienceSection />
         <ProjectSection />
       </div>
     </main>

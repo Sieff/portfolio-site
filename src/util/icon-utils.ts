@@ -21,6 +21,9 @@ export enum IconName {
   DBT = "dbt",
   SQL = "sql",
   DOCKER = "docker",
+  GITHUB = "github",
+  LINKEDIN = "linkedin",
+  SQLITE = "sqlite",
 }
 
 export function getIconTailwindClass(iconName: IconName) {
@@ -57,6 +60,8 @@ export function getIconTailwindClass(iconName: IconName) {
       return 'bg-[#df6c20]'
     case IconName.DOCKER:
       return 'bg-[#1d63ed]'
+    case IconName.SQLITE:
+      return 'bg-[#96D9F5]'
     default: return 'bg-[var(--primary)]'
   }
 }
@@ -95,6 +100,8 @@ export function getIconColor(iconName: IconName) {
       return '#df6c20'
     case IconName.DOCKER:
       return '#1d63ed'
+    case IconName.SQLITE:
+      return '#96D9F5'
     default:
       return 'var(--primary)'
   }

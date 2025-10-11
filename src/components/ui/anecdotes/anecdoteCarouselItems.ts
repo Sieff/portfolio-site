@@ -103,6 +103,12 @@ export const CAROUSEL_DATA_BOTTOM: TechAnecdoteData[] = [
     title: 'Docker',
     anecdote: 'Frisch im Werkstudentenjob angekommen, war meine erste Aufgabe, die Website zu dockern. Ob schnell mal eine DB aufsetzen oder App containerisieren, Docker ist mir echt ans Herz gewachsen.',
   },
+  {
+    iconName: IconName.SQLITE,
+    color: getIconColor(IconName.SQLITE),
+    title: 'SQLite',
+    anecdote: 'Als einfache Lösung, um Daten clientseitig zu speichern, haben wir in unserem Masterprojekt SQLite genutzt. Super als Quick-and-dirty-Lösung, und über eine Bridge haben wir uns noch die Option offengehalten, später zu wechseln.',
+  },
 ]
 
 export interface TechAnecdoteData {

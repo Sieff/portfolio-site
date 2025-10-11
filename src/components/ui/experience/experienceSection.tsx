@@ -47,7 +47,7 @@ function ExperienceSection() {
   ]
 
   return (
-    <div className="w-full flex flex-col gap-3">
+    <div className="flex flex-col gap-3 w-(--width-content)">
       <h3>Erfahrungen</h3>
       <Experience experience={experienceData} />
     </div>

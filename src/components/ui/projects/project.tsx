@@ -63,32 +63,42 @@ function Project({thumbnail, showcase, title, description, iframeUrl}: ProjectPr
   }, [hover, showcase.length]);
 
   return (
-    <Card ref={ref} className={cn("bg-primary p-0 gap-0 mb-4 overflow-hidden", styles.project)}>
-      <div className="relative w-full">
-        {thumbnail && (
-          <>
-            <Image src={thumbnail} alt={title} />
-            {hover && showcase.map((item, idx) =>
-              <Image key={idx} src={item} alt={title} className={cn("absolute inset-0 transition-opacity duration-1000", idx === index ? "opacity-100 z-1 delay-300" : "opacity-0 z-0 delay-700")}/>
+    <>
+      <Card ref={ref} className={cn("bg-primary p-0 gap-0 mb-4", styles.project)}>
+        <div className="rounded-md overflow-hidden">
+          <div className="relative w-full">
+            {thumbnail && (
+              <>
+                <Image src={thumbnail} alt={title} />
+                {hover && showcase.map((item, idx) =>
+                  <Image key={idx} src={item} alt={title} className={cn("absolute inset-0 transition-opacity duration-1000", idx === index ? "opacity-100 z-1 delay-300" : "opacity-0 z-0 delay-700")}/>
+                )}
+              </>
             )}
-          </>
-        )}
 
-        {iframeUrl && (
-          <IframeProject iframeUrl={iframeUrl} />
-        )}
+            {iframeUrl && (
+              <IframeProject iframeUrl={iframeUrl} />
+            )}
 
-      </div>
+          </div>
 
-      <div className='p-4'>
-        <div className="text-primary-foreground font-bold">
-          {title}
+          <div className='p-4 bg-primary'>
+            <div className="text-primary-foreground font-bold">
+              {title}
+            </div>
+            <div className="text-primary-foreground">
+              {description}
+            </div>
+          </div>
         </div>
-        <div className="text-primary-foreground">
-          {description}
+        <div className={styles.projectShadow} style={{
+          background: thumbnail ? `url(${thumbnail?.src}) center/cover no-repeat`: "var(--primary)"
+        }}>
         </div>
-      </div>
-    </Card>
+      </Card>
+
+      <div className={styles.backdrop}></div>
+    </>
   )
 }
 

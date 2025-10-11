@@ -1,12 +1,35 @@
 .project {
-  transition: all 0.3s;
+  transition: all 0.1s ease-in-out;
   position: relative;
   z-index: 0;
+  overflow: visible;
 }
 
 .project:hover {
-  transform: scale(1.5);
+  transform: scale(1.4);
   z-index: 10;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0);
+  backdrop-filter: none;
+  pointer-events: none;
+  z-index: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.project:hover + .backdrop {
+  background: rgba(0,0,0,0.4);
+  z-index: 9;
+}
+
+.projectShadow {
+  position: absolute;
+  inset: 0;
+  filter: blur(20px);
+  z-index: -1;
 }
 
 .iframe {

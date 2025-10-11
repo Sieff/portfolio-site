@@ -12,11 +12,11 @@ interface Props {
 }
 
 function AnecdoteCaroussel({items, reverse = false, delay = false}: Props) {
-  const minNumberItems = 4;
+  const minNumberItems = 5;
   const repeats = Math.max(2, Math.ceil(2 * minNumberItems / items.length));
 
   return (
-    <div className={cn(styles.carousel, "bg-[#121212] py-2 flex justify-start w-(--width-content) overflow-hidden")}>
+    <div className={cn(styles.carousel, "bg-[#121212] py-2 flex justify-start w-full overflow-hidden")}>
       <div className={cn(styles.group, reverse && styles.reverse, delay && styles.delay, "flex gap-5")}>
         {[...Array(repeats)].map((_, i) => (
           items.map((item, j) => (
