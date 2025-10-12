@@ -5,17 +5,22 @@ import Hero from "@/components/ui/hero";
 import ExperienceSection from "@/components/ui/experience/experienceSection";
 import { useIntersectionObserver } from "@uidotdev/usehooks";
 import ProjectSection from "@/components/ui/projects/projectSection";
+import Socials from "@/components/ui/socials";
 
 export default function Home() {
   const [locked, setLocked] = useState(true);
+  const [heroVisible, setHerovisible] = useState(true);
 
   const [ref, entry] = useIntersectionObserver({
-    threshold: 0.9,
+    threshold: 0.5,
   });
 
   useEffect(() => {
     if (entry?.isIntersecting) {
       setLocked(true);
+      setHerovisible(true);
+    } else {
+      setHerovisible(false);
     }
   }, [entry?.isIntersecting]);
 
@@ -28,7 +33,7 @@ export default function Home() {
 
         setTimeout(() => {
           setLocked(false);
-        }, 500);
+        }, 300);
       }
     };
 
@@ -39,10 +44,11 @@ export default function Home() {
 
   return (
     <main className={"snap-y h-screen overflow-y-scroll snap-mandatory min-w-screen flex flex-col items-center bg-primary"}>
+      <Socials heroVisible={heroVisible} />
       <div ref={ref} className={"snap-start h-screen"}>
         <Hero />
       </div>
-      <div id="content" className="snap-start w-full flex flex-col gap-5 justify-center items-center pt-10">
+      <div id="content" className="snap-start w-full flex flex-col gap-4 justify-center items-center">
         <AnecdoteSection />
         <ExperienceSection />
         <ProjectSection />

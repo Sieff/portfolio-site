@@ -10,13 +10,13 @@ import {cn} from "@/lib/utils";
 
 function AnecdoteSection() {
   return (
-    <div className="flex flex-col gap-3 w-250">
+    <div className="w-250 py-10">
       <div>
-        <div className={cn(styles.carousel, "bg-[#121212] h-3")} />
+        <div className={cn(styles.carousel, "bg-(--lowered) h-3")} />
         <AnecdoteCaroussel items={CAROUSEL_DATA_TOP} />
         <AnecdoteCaroussel items={CAROUSEL_DATA_MIDDLE} reverse={true} />
         <AnecdoteCaroussel items={CAROUSEL_DATA_BOTTOM} delay={true} />
-        <div className={cn(styles.carousel, "bg-[#121212] h-3")} />
+        <div className={cn(styles.carousel, "bg-(--lowered) h-3")} />
       </div>
     </div>
   )

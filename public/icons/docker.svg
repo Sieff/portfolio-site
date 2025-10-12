@@ -3,7 +3,7 @@
   <defs>
     <style>
       .cls-1 {
-        fill: var(--primary);
+        fill: var(--icon-primary);
         stroke-width: 0px;
       }
     </style>

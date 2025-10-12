@@ -24,6 +24,8 @@ export enum IconName {
   GITHUB = "github",
   LINKEDIN = "linkedin",
   SQLITE = "sqlite",
+  INSTAGRAM = "instagram",
+  EMAIL = "email",
 }
 
 export function getIconTailwindClass(iconName: IconName) {
