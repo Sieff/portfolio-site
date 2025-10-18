@@ -1,0 +1,6 @@
+{
+  "name": "portfolio-site",
+  "workspaces": [
+    "packages/*"
+  ]
+}

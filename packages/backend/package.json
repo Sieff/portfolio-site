@@ -1,0 +1,33 @@
+{
+  "name": "portfolio-site-backend",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Backend server for portfolio site.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "npx webpack",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "portfolio-site-shared": "0.0.1",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.8.1",
+    "gulp": "^5.0.1",
+    "html-webpack-plugin": "^5.6.4",
+    "lodash": "^4.17.21",
+    "ts-loader": "^9.5.4",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "webpack": "^5.102.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "bundleDependencies": [
+    "express"
+  ]
+}
