@@ -31,16 +31,25 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Install only production dependencies
-COPY ./packages/frontend/package.json ./
+COPY ./packages/frontend/package.json ./packages/frontend/
 
 # Copy the build output from the builder
-COPY --from=builder /app/packages/frontend/.next ./.next
-COPY --from=builder /app/packages/frontend/public ./public
-COPY --from=builder /app/packages/frontend/package.json ./package.json
-COPY --from=builder /app/packages/frontend/node_modules/ ./node_modules/
+COPY --from=builder /app/packages/frontend/.next ./packages/frontend/.next
+COPY --from=builder /app/packages/frontend/public ./packages/frontend/public
+COPY --from=builder /app/packages/frontend/package.json ./packages/frontend/package.json
+
+# Shared resources
+COPY tsconfig.json ./
+COPY ./packages/shared/package.json ./packages/shared/
+COPY ./packages/shared/src/ ./packages/shared/src/
+COPY package.json ./
+COPY package-lock.json ./
+
+RUN npm ci --omit=dev
 
 # Expose the port your Next.js app will run on
 EXPOSE 3000
 
 # Start the Next.js server
-CMD ["npm", "start"]
+CMD ["cd", "./packages/frontend", "&&", "npm", "start"]
+
