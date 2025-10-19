@@ -11,7 +11,6 @@ jobs:
     uses: ./.github/workflows/build-image.yml
     with:
       context: backend
-      ref: ${{ github.ref }}
     secrets: inherit
 
   frontend:
@@ -19,6 +18,5 @@ jobs:
     uses: ./.github/workflows/build-image.yml
     with:
       context: frontend
-      ref: ${{ github.ref }}
     secrets: inherit
 
