@@ -1,0 +1,46 @@
+# Stage 1: Build the Next.js app
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Install dependencies
+COPY ./packages/frontend/package.json ./packages/frontend/
+COPY ./packages/frontend/package-lock.json ./packages/frontend/
+
+COPY ./packages/frontend/src/ ./packages/frontend/src/
+COPY ./packages/frontend/public/ ./packages/frontend/public/
+
+COPY ./packages/frontend/components.json ./packages/frontend/eslint.config.mjs ./packages/frontend/next.config.ts ./packages/frontend/next-env.d.ts ./packages/frontend/postcss.config.mjs ./packages/frontend/tailwind.config.js ./packages/frontend/
+
+# Shared resources
+COPY tsconfig.json ./
+COPY ./packages/shared/package.json ./packages/shared/
+COPY ./packages/shared/src/ ./packages/shared/src/
+COPY package.json ./
+COPY package-lock.json ./
+
+RUN npm ci
+
+
+# Build the app for production (Turbopack)
+RUN cd ./packages/frontend && npm run build
+
+# Stage 2: Production image
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install only production dependencies
+COPY ./packages/frontend/package.json ./packages/frontendpackage-lock.json ./
+RUN npm ci --omit=dev
+
+# Copy the build output from the builder
+COPY --from=builder /app/packages/frontend/.next ./.next
+COPY --from=builder /app/packages/frontend/public ./public
+COPY --from=builder /app/packages/frontend/package.json ./package.json
+
+# Expose the port your Next.js app will run on
+EXPOSE 3000
+
+# Start the Next.js server
+CMD ["npm", "start"]

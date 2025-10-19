@@ -1,0 +1,37 @@
+# Stage 1: Build the Next.js app
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Install dependencies
+COPY ./packages/backend/package.json ./packages/backend/
+COPY ./packages/backend/package-lock.json ./packages/backend/
+COPY ./packages/backend/src/ ./packages/backend/src/
+COPY ./packages/backend/tsconfig.json ./packages/backend/tsconfig.json
+COPY ./packages/backend/webpack.config.js ./packages/backend/webpack.config.js
+COPY tsconfig.json ./
+COPY ./packages/shared/package.json ./packages/shared/
+COPY ./packages/shared/src/ ./packages/shared/src/
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm ci
+
+# Build the app for production (Turbopack)
+RUN cd ./packages/backend && npm run build
+
+# Stage 2: Production image
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install only production dependencies
+COPY ./packages/backend/package.json ./
+
+# Copy the build output from the builder
+COPY --from=builder /app/packages/backend/dist/ ./dist/
+
+# Expose the port
+EXPOSE 3001
+
+# Start the Next.js server
+CMD ["npm", "start"]
