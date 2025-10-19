@@ -19,7 +19,7 @@ function Chat() {
   const socketRef = useRef<Socket>(null);
 
   useEffect(() => {
-    socketRef.current = io('http://localhost:3001');
+    socketRef.current = io('/api');
     socketRef.current.on('chat message', (msg: ChatMessage) => {
       setMessages(prev => [...prev, msg]);
     });

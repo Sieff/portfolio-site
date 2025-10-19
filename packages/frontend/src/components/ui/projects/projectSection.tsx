@@ -84,7 +84,7 @@ const PROJECT_DATA: ProjectProps[] = [
     title: 'Portfolio Website',
     description: 'Um auf kreative Weise meine Erfahrungen und Sideprojects vorzustellen, habe ich eine kleine Portfolio Seite erstellt. ' +
       'Meinen RaspberryPi konnte ich dafür auch endlich mal auspacken und die Website gleich selber hosten.',
-    iframeUrl: 'http://localhost:3000',
+    iframeUrl: '/',
     showcase: []
   },
 ]
