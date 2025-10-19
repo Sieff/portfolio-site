@@ -15,18 +15,8 @@ COPY package.json ./
 COPY package-lock.json ./
 RUN npm ci
 
-# Build the app for production (Turbopack)
-RUN cd ./packages/backend && npm run build
-
-# Stage 2: Production image
-FROM node:20-alpine
-
-WORKDIR /app
-
-# Install only production dependencies
-COPY ./packages/backend/package.json ./
-
-# Copy the build output from the builder
-COPY --from=builder /app/packages/backend/dist/ ./dist/
+# Start the Next.js server
+WORKDIR /app/packages/backend
+CMD ["npm", "start"]
 
 
