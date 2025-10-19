@@ -49,5 +49,6 @@ RUN npm ci --omit=dev
 EXPOSE 3000
 
 # Start the Next.js server
-CMD ["cd", "./packages/frontend", "&&", "npm", "start"]
+WORKDIR /app/packages/frontend
+CMD ["npm", "start"]
 
