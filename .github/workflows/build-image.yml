@@ -47,5 +47,5 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/${{ env.ACTOR_LOWER }}/${{ env.REPO_NAME_LOWER }}-${{ github.event.inputs.context }}:${{ env.IMAGE_TAG }}
-            ghcr.io/${{ env.ACTOR_LOWER }}/${{ env.REPO_NAME_LOWER }}-${{ github.event.inputs.context }}:latest
+            ghcr.io/${{ env.ACTOR_LOWER }}/${{ env.REPO_NAME_LOWER }}-${{ inputs.context }}:${{ env.IMAGE_TAG }}
+            ghcr.io/${{ env.ACTOR_LOWER }}/${{ env.REPO_NAME_LOWER }}-${{ inputs.context }}:latest
