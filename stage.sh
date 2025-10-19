@@ -7,15 +7,15 @@ if [ -n "$(git status --porcelain)" ]; then
   exit 1
 fi
 
-# Bump patch version in all workspaces and root
-npm version patch --workspaces --workspaces-update-root
+# Bump patch version in all workspaces
+npm version patch --workspaces
 
 # Get the new version
 NEW_VERSION=$(node -p "require('./package.json').version")
 
 # Commit and create a git tag
 git add .
-git commit -m "chore(release): v$NEW_VERSION"
+git commit -m "v$NEW_VERSION"
 git tag "v$NEW_VERSION"
 
 # Push commit and tag
