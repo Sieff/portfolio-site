@@ -1,11 +1,12 @@
 name: Build Image
 
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       context:
         description: 'Context'
         required: true
+        type: string
 
 jobs:
   build-and-push:
