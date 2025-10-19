@@ -8,7 +8,7 @@ on:
 jobs:
   backend:
     name: Build Backend
-    uses: ./.github/workflows/build-image.yaml
+    uses: ./.github/workflows/build-image.yml
     with:
       context: backend
       ref: ${{ github.ref }}
@@ -16,7 +16,7 @@ jobs:
 
   frontend:
     name: Build Frontend
-    uses: ./.github/workflows/build-image.yaml
+    uses: ./.github/workflows/build-image.yml
     with:
       context: frontend
       ref: ${{ github.ref }}
