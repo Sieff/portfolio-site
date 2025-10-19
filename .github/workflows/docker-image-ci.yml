@@ -6,21 +6,19 @@ on:
       - 'v*'
 
 jobs:
-  call-workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Call workflow for frontend
-        uses: peter-evans/workflow-dispatch@v1
-        with:
-          workflow: 'build-image.yml'
-          ref: ${{ github.ref }}
-          inputs: |
-            context: frontend
+  backend:
+    name: Build Backend
+    uses: ./.github/workflows/build-image.yaml
+    with:
+      context: backend
+      ref: ${{ github.ref }}
+    secrets: inherit
 
-      - name: Call workflow for backend
-        uses: peter-evans/workflow-dispatch@v1
-        with:
-          workflow: 'build-image.yml'
-          ref: ${{ github.ref }}
-          inputs: |
-            context: backend
+  frontend:
+    name: Build Frontend
+    uses: ./.github/workflows/build-image.yaml
+    with:
+      context: frontend
+      ref: ${{ github.ref }}
+    secrets: inherit
+
