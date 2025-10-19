@@ -29,8 +29,4 @@ COPY ./packages/backend/package.json ./
 # Copy the build output from the builder
 COPY --from=builder /app/packages/backend/dist/ ./dist/
 
-# Expose the port
-EXPOSE 3001
 
-# Start the Next.js server
-CMD ["npm", "start"]

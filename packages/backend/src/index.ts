@@ -7,7 +7,6 @@ import {ChatMessage} from "shared/src/index.js";
 const app = express();
 const server = createServer(app);
 const io = new Server(server, {
-  path: '/api/socket.io',
   cors: {
     origin: "https://steffensc.hu",
     methods: ["GET", "POST"]
