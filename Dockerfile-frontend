@@ -1,11 +1,10 @@
 # Stage 1: Build the Next.js app
-FROM node:20-bullseye AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
 # Install dependencies
 COPY ./packages/frontend/package.json ./packages/frontend/
-COPY ./packages/frontend/package-lock.json ./packages/frontend/
 
 COPY ./packages/frontend/src/ ./packages/frontend/src/
 COPY ./packages/frontend/public/ ./packages/frontend/public/
@@ -17,16 +16,15 @@ COPY tsconfig.json ./
 COPY ./packages/shared/package.json ./packages/shared/
 COPY ./packages/shared/src/ ./packages/shared/src/
 COPY package.json ./
-COPY package-lock.json ./
 
-RUN npm ci
+RUN npm i
 
 
 # Build the app for production (Turbopack)
 RUN cd ./packages/frontend && npm run build
 
 # Stage 2: Production image
-FROM node:20-bullseye
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -37,13 +35,13 @@ COPY ./packages/frontend/package.json ./packages/frontend/
 COPY --from=builder /app/packages/frontend/.next ./packages/frontend/.next
 COPY --from=builder /app/packages/frontend/public ./packages/frontend/public
 COPY --from=builder /app/packages/frontend/package.json ./packages/frontend/package.json
+COPY --from=builder /app/package-lock.json ./package-lock.json
 
 # Shared resources
 COPY tsconfig.json ./
 COPY ./packages/shared/package.json ./packages/shared/
 COPY ./packages/shared/src/ ./packages/shared/src/
 COPY package.json ./
-COPY package-lock.json ./
 
 RUN npm ci --omit=dev
 
