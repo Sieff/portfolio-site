@@ -23,7 +23,7 @@
 </form>
 <script src="/api/socket.io/socket.io.js"></script>
 <script>
-    const socket = io('/api');
+    const socket = io('/', { path: '/api/socket.io' });
     const messages = document.getElementById('messages');
 
     const form = document.getElementById('form');

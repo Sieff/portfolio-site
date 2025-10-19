@@ -19,7 +19,7 @@ function Chat() {
   const socketRef = useRef<Socket>(null);
 
   useEffect(() => {
-    socketRef.current = io('/api');
+    socketRef.current = io('/', { path: '/api/socket.io' });
     socketRef.current.on('chat message', (msg: ChatMessage) => {
       setMessages(prev => [...prev, msg]);
     });
