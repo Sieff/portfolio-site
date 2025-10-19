@@ -10,7 +10,7 @@ COPY ./packages/frontend/package-lock.json ./packages/frontend/
 COPY ./packages/frontend/src/ ./packages/frontend/src/
 COPY ./packages/frontend/public/ ./packages/frontend/public/
 
-COPY ./packages/frontend/components.json ./packages/frontend/eslint.config.mjs ./packages/frontend/next.config.ts ./packages/frontend/next-env.d.ts ./packages/frontend/postcss.config.mjs ./packages/frontend/tailwind.config.js ./packages/frontend/
+COPY ./packages/frontend/components.json ./packages/frontend/eslint.config.mjs ./packages/frontend/next.config.ts ./packages/frontend/postcss.config.mjs ./packages/frontend/tailwind.config.js ./packages/frontend/
 
 # Shared resources
 COPY tsconfig.json ./
