@@ -6,6 +6,7 @@ import {useEffect, useRef, useState} from "react";
 import {cn} from "@/lib/utils";
 import styles from "./project.module.scss";
 import ProxyImage from "@/components/ui/atom/proxyImage";
+import {useSearchParams} from "next/navigation";
 
 
 export interface ProjectProps {
@@ -17,6 +18,8 @@ export interface ProjectProps {
 }
 
 function IframeProject({iframeUrl}: Partial<ProjectProps>) {
+  const searchParams = useSearchParams()
+  const depth = Number(searchParams.get('depth'));
 
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
@@ -31,6 +34,7 @@ function IframeProject({iframeUrl}: Partial<ProjectProps>) {
       // stop wheel/scroll events from bubbling to parent
       doc.addEventListener("wheel", (e) => e.stopPropagation(), { passive: false });
       doc.addEventListener("scroll", (e) => e.stopPropagation(), { passive: false });
+      doc.addEventListener("touchmove", (e) => e.stopPropagation(), { passive: false });
     };
 
     iframe.addEventListener("load", onLoad);
@@ -38,10 +42,14 @@ function IframeProject({iframeUrl}: Partial<ProjectProps>) {
   }, [iframeUrl]);
 
   return (
-    <iframe ref={iframeRef} className={cn("w-full aspect-[16/9] border-0", styles.iframe)}
-            src={iframeUrl}
-            style={{ border: "none" }}
-    />
+    <>
+      {depth >= 2 ? (<></>) :
+        <iframe ref={iframeRef} className={cn("w-full aspect-[16/9] border-0", styles.iframe)}
+                src={`${iframeUrl}?depth=${depth + 1}`}
+                style={{ border: "none" }}
+        />
+      }
+    </>
   )
 }
 

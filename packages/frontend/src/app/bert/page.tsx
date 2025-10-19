@@ -6,6 +6,7 @@ import ExperienceSection from "@/components/ui/experience/experienceSection";
 import { useIntersectionObserver } from "@uidotdev/usehooks";
 import ProjectSection from "@/components/ui/projects/projectSection";
 import Socials from "@/components/ui/socials";
+import Chat from "@/components/ui/chat";
 
 export default function Home() {
   const [locked, setLocked] = useState(true);
@@ -45,6 +46,7 @@ export default function Home() {
   return (
     <main className={"snap-y h-screen overflow-y-scroll snap-mandatory min-w-screen flex flex-col items-center bg-primary"}>
       <Socials heroVisible={heroVisible} />
+      <Chat />
       <div ref={ref} className={"snap-start h-screen"}>
         <Hero />
       </div>

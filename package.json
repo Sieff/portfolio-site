@@ -1,7 +1,7 @@
 {
   "name": "portfolio-site",
+  "version": "0.1.13",
   "workspaces": [
-    "packages/frontend",
-    "packages/backend"
+    "packages/*"
   ]
 }

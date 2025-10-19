@@ -1,6 +1,6 @@
 {
-  "name": "portfolio-site",
-  "workspaces": [
-    "packages/*"
-  ]
+  "name": "portfolio-site-shared",
+  "version": "0.0.1",
+  "main": "index.ts",
+  "types": "index.ts"
 }

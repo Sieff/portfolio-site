@@ -1,6 +1,6 @@
-interface ChatMessage {
+interface ChatMessageInterface {
   name: string;
   message: string;
 }
 
-export default ChatMessage;
+export default ChatMessageInterface;

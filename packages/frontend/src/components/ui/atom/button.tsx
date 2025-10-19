@@ -47,21 +47,11 @@ function Button({
   const Comp = asChild ? Slot : "button"
 
   return (
-    <div className={cn(styles.buttonWrapper, "rounded-md")}>
-      <svg height="110%" width="110%" xmlns="http://www.w3.org/2000/svg">
-        <rect
-          className={styles.customBorder}
-          height="100%"
-          width="100%"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <Comp
-        data-slot="button"
-        className={cn(buttonVariants({variant, size, className}))}
-        {...props}
-      />
-    </div>
+    <Comp
+      data-slot="button"
+      className={cn(buttonVariants({variant, size, className}))}
+      {...props}
+    />
   )
 }
 
