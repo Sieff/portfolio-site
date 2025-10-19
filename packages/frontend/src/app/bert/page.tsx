@@ -1,5 +1,5 @@
 'use client';
-import {useEffect, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
 import {AnecdoteSection} from "@/components/ui/anecdotes/anecdoteSection";
 import Hero from "@/components/ui/hero";
 import ExperienceSection from "@/components/ui/experience/experienceSection";
@@ -53,7 +53,9 @@ export default function Home() {
       <div id="content" className="snap-start w-full flex flex-col gap-4 justify-center items-center">
         <AnecdoteSection />
         <ExperienceSection />
-        <ProjectSection />
+        <Suspense fallback={<div></div>}>
+          <ProjectSection />
+        </Suspense>
       </div>
     </main>
   );
