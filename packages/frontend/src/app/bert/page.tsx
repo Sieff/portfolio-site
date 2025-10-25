@@ -44,7 +44,7 @@ export default function Home() {
 
 
   return (
-    <main className={"snap-y h-screen overflow-y-scroll snap-mandatory min-w-screen flex flex-col items-center bg-primary"}>
+    <main className={"snap-y h-screen overflow-y-scroll overflow-x-hidden snap-mandatory min-w-screen flex flex-col items-center bg-primary"}>
       <Socials heroVisible={heroVisible} />
       <Chat />
       <div ref={ref} className={"snap-start h-screen"}>
@@ -56,6 +56,7 @@ export default function Home() {
         <Suspense fallback={<div></div>}>
           <ProjectSection />
         </Suspense>
+        <div className={"p-4 mt-10 text-primary-foreground"}>© 2025</div>
       </div>
     </main>
   );

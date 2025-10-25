@@ -6,7 +6,7 @@ function ExperienceSection() {
 
   const experienceData: ExperienceNodeData[] = [
     {
-      label: "Software Entwickler bei Folge3",
+      label: "Software Entwickler bei <strong><a style='color: #08b200' href='https://www.folge3.de' target='_blank'>Folge 3</a></strong>",
       supporter: "2020 - heute",
       icon: IconName.FOLGE3,
     },

@@ -21,9 +21,9 @@
 <form id="form" action="">
     <input id="input" autocomplete="off" /><button>Send</button>
 </form>
-<script src="/api/socket.io/socket.io.js"></script>
+<script src="{{BACKEND_PATH}}/socket.io/socket.io.js"></script>
 <script>
-    const socket = io('/', { path: '/api/socket.io' });
+    const socket = io('/', { path: '{{BACKEND_PATH}}/socket.io' });
     const messages = document.getElementById('messages');
 
     const form = document.getElementById('form');

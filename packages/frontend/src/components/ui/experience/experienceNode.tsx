@@ -44,8 +44,7 @@ function ExperienceNode({data, isSideTrack, isLast, isFirst, mainFirst}: Experie
           <Icon icon={data.icon}></Icon>
         </div>
         <div>
-          <div className="text-primary-foreground">
-            {data.label}
+          <div className="text-primary-foreground" dangerouslySetInnerHTML={{ __html: data.label }}>
           </div>
           <div className="text-muted-foreground">
             {data.supporter}

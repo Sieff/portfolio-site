@@ -33,7 +33,7 @@ function Socials({heroVisible}: Props) {
   ]
 
   return (
-    <div className={cn("fixed z-1 transition-all duration-500 m-4 h-12 w-12", heroVisible ? "top-0 right-0" : "top-[40%] right-0")}>
+    <div className={cn("fixed z-99 transition-all duration-500 m-4 h-12 w-12", heroVisible ? "top-0 right-0" : "top-[40%] right-0")}>
       {socials.map((social: Social, idx) => (
         <div className={"absolute transition-all duration-500"}
              key={idx}

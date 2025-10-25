@@ -200,7 +200,7 @@ h3 {
   --icon-primary: oklch(0.205 0 0);
   --icon-secondary: oklch(0.97 0 0);
   --text-dark: oklch(0.205 0 0);
-  --lowered: #121212;
+  --lowered: #0c0d0e;
 }
 
 @layer base {
