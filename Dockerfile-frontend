@@ -5,6 +5,7 @@ WORKDIR /app
 
 # Install dependencies
 COPY ./packages/frontend/package.json ./packages/frontend/
+COPY ./packages/frontend/.env.production ./packages/frontend/
 
 COPY ./packages/frontend/src/ ./packages/frontend/src/
 COPY ./packages/frontend/public/ ./packages/frontend/public/
@@ -20,7 +21,6 @@ COPY package.json ./
 RUN npm i
 
 WORKDIR /app/packages/frontend
-ENV NODE_ENV=production
 # Build the app for production (Turbopack)
 RUN npm run build
 
