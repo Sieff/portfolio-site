@@ -20,6 +20,7 @@ COPY package.json ./
 RUN npm i
 
 WORKDIR /app/packages/frontend
+ENV NODE_ENV=production
 # Build the app for production (Turbopack)
 RUN npm run build
 
