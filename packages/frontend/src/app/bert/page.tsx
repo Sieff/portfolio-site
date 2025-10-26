@@ -46,7 +46,9 @@ export default function Home() {
   return (
     <main className={"snap-y h-screen overflow-y-scroll overflow-x-hidden snap-mandatory min-w-screen flex flex-col items-center bg-primary"}>
       <Socials heroVisible={heroVisible} />
-      <Chat />
+      <Suspense fallback={<div className={"absolute"}></div>}>
+        <Chat />
+      </Suspense>
       <div ref={ref} className={"snap-start h-screen"}>
         <Hero />
       </div>

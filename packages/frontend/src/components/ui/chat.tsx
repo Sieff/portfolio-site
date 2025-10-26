@@ -34,7 +34,7 @@ function Chat() {
     return () => {
       socketRef.current?.disconnect();
     };
-  }, []);
+  }, [depth]);
 
   useEffect(() => {
     if (ref.current) {
